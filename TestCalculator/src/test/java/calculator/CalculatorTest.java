@@ -53,20 +53,4 @@ class CalculatorTest {
         char operation = '/';
         assertThrows(ArithmeticException.class, () -> new Calculator(firstNumber, secondNumber).calculate(operation));
     }
-
-//    @Test
-//    public void testOverflowUp() {
-//        int firstNumber = Integer.MAX_VALUE;
-//        int secondNumber = 1;
-//        char operation = '+';
-//        assertThrows(ArithmeticException.class, () -> new Calculator(firstNumber, secondNumber).calculate(operation));
-//    }
-//
-//    @ParameterizedTest
-//    @CsvSource({"5, 0"})
-//    public void testivideNumberByZero(int firstNumber, int secondNumber) {
-//        char operation = '/';
-//        assertThrows(ArithmeticException.class, () -> new Calculator(firstNumber, secondNumber).calculate(operation));
-//    }
-
 }
