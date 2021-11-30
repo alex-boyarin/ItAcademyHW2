@@ -9,14 +9,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 class CalculatorTest {
-
+    Calculator calculator;
 
     @ParameterizedTest
     @ArgumentsSource(ArgumentProvider.class)
     public void testAddTwoNumbers(int firstNumber, int secondNumber) {
         int expectedResult = firstNumber + secondNumber;
         char operation = '+';
-        Calculator calculator = new Calculator(firstNumber, secondNumber);
+        calculator = new Calculator(firstNumber, secondNumber);
         assertEquals(expectedResult, calculator.calculate(operation));
     }
 
@@ -25,7 +25,7 @@ class CalculatorTest {
     public void testSubtractTwoNumbers(int firstNumber, int secondNumber) {
         int expectedResult = firstNumber - secondNumber;
         char operation = '-';
-        Calculator calculator = new Calculator(firstNumber, secondNumber);
+        calculator = new Calculator(firstNumber, secondNumber);
         assertEquals(expectedResult, calculator.calculate(operation));
     }
 
@@ -34,7 +34,7 @@ class CalculatorTest {
     public void testMultiplyTwoNumbers(int firstNumber, int secondNumber) {
         int expectedResult = firstNumber * secondNumber;
         char operation = '*';
-        Calculator calculator = new Calculator(firstNumber, secondNumber);
+        calculator = new Calculator(firstNumber, secondNumber);
         assertEquals(expectedResult, calculator.calculate(operation));
     }
 
@@ -43,7 +43,7 @@ class CalculatorTest {
     public void testDivideTwoNumbers(int firstNumber, int secondNumber) {
         int expectedResult = firstNumber / secondNumber;
         char operation = '/';
-        Calculator calculator = new Calculator(firstNumber, secondNumber);
+        calculator = new Calculator(firstNumber, secondNumber);
         assertEquals(expectedResult, calculator.calculate(operation));
     }
 
@@ -52,5 +52,18 @@ class CalculatorTest {
     public void testDivideNumberByZero(int firstNumber, int secondNumber) {
         char operation = '/';
         assertThrows(ArithmeticException.class, () -> new Calculator(firstNumber, secondNumber).calculate(operation));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "2,2",
+            "3,3",
+            "5,4",
+    })
+    public void testExponentiation(int number, int powValue) {
+        char operation = "pow".charAt(0);
+        double expected = Math.pow(number, powValue);
+        calculator = new Calculator(number, powValue);
+        assertEquals(expected, calculator.calculate(operation));
     }
 }
