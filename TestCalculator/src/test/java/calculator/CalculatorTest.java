@@ -55,8 +55,7 @@ class CalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"2,2", "3,3", "5,4",
-    })
+    @CsvSource({"2,2", "3,3", "5,4"})
     public void testExponentiation(int number, int powValue) {
         char operation = "pow".charAt(0);
         double expected = Math.pow(number, powValue);
