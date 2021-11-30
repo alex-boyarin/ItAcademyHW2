@@ -26,7 +26,7 @@ public class Calculator {
         this.b = b;
     }
 
-    public float calculate(char operation) throws ArithmeticException {
+    public double calculate(char operation) throws ArithmeticException {
         switch (operation) {
             case '-': {
                 return a - b;
@@ -42,6 +42,9 @@ public class Calculator {
             }
             case 'p': {
                 return getPow(a, b);
+            }
+            case 's': {
+                return Math.pow(a, 1.0 / b);
             }
             default: {
                 throw new IllegalArgumentException("Не верная математическая операция!!!");

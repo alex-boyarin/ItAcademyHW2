@@ -14,37 +14,37 @@ class CalculatorTest {
     @ParameterizedTest
     @ArgumentsSource(ArgumentProvider.class)
     public void testAddTwoNumbers(int firstNumber, int secondNumber) {
-        int expectedResult = firstNumber + secondNumber;
+        int expected = firstNumber + secondNumber;
         char operation = '+';
         calculator = new Calculator(firstNumber, secondNumber);
-        assertEquals(expectedResult, calculator.calculate(operation));
+        assertEquals(expected, calculator.calculate(operation));
     }
 
     @ParameterizedTest
     @ArgumentsSource(ArgumentProvider.class)
     public void testSubtractTwoNumbers(int firstNumber, int secondNumber) {
-        int expectedResult = firstNumber - secondNumber;
+        int expected = firstNumber - secondNumber;
         char operation = '-';
         calculator = new Calculator(firstNumber, secondNumber);
-        assertEquals(expectedResult, calculator.calculate(operation));
+        assertEquals(expected, calculator.calculate(operation));
     }
 
     @ParameterizedTest
     @ArgumentsSource(ArgumentProvider.class)
     public void testMultiplyTwoNumbers(int firstNumber, int secondNumber) {
-        int expectedResult = firstNumber * secondNumber;
+        int expected = firstNumber * secondNumber;
         char operation = '*';
         calculator = new Calculator(firstNumber, secondNumber);
-        assertEquals(expectedResult, calculator.calculate(operation));
+        assertEquals(expected, calculator.calculate(operation));
     }
 
     @ParameterizedTest
     @ArgumentsSource(ArgumentProvider.class)
     public void testDivideTwoNumbers(int firstNumber, int secondNumber) {
-        int expectedResult = firstNumber / secondNumber;
+        int expected = firstNumber / secondNumber;
         char operation = '/';
         calculator = new Calculator(firstNumber, secondNumber);
-        assertEquals(expectedResult, calculator.calculate(operation));
+        assertEquals(expected, calculator.calculate(operation));
     }
 
     @ParameterizedTest
@@ -55,15 +55,21 @@ class CalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource({
-            "2,2",
-            "3,3",
-            "5,4",
+    @CsvSource({"2,2", "3,3", "5,4",
     })
     public void testExponentiation(int number, int powValue) {
         char operation = "pow".charAt(0);
         double expected = Math.pow(number, powValue);
         calculator = new Calculator(number, powValue);
+        assertEquals(expected, calculator.calculate(operation));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"4,2", "3,2", "9,2", "16,2"})
+    public void testSquareRootOfNumber(int number, int square) {
+        char operation = "square".charAt(0);
+        double expected = Math.sqrt(number);
+        calculator = new Calculator(number, square);
         assertEquals(expected, calculator.calculate(operation));
     }
 }

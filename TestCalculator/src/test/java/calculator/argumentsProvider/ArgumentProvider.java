@@ -20,7 +20,6 @@ public class ArgumentProvider implements ArgumentsProvider {
                 Arguments.of(12, 4),
                 Arguments.of(4, 2),
                 Arguments.of(12, 3)
-
         );
     }
 }
