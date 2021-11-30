@@ -1,9 +1,9 @@
 package calculator;
 
 public class Calculator {
-
     private int a;
     private int b;
+
 
     public Calculator(int a, int b) {
         this.a = a;
@@ -26,11 +26,8 @@ public class Calculator {
         this.b = b;
     }
 
-    public float calculate(char operation) {
+    public float calculate(char operation) throws ArithmeticException {
         switch (operation) {
-            default: {
-                return 0;
-            }
             case '-': {
                 return a - b;
             }
@@ -43,6 +40,20 @@ public class Calculator {
             case '*': {
                 return a * b;
             }
+            case 'p': {
+                return getPow(a, b);
+            }
+            default: {
+                throw new IllegalArgumentException("Не верная математическая операция!!!");
+            }
+        }
+    }
+
+    private int getPow(int value, int powValue) {
+        if (powValue == 1 || powValue == 0) {
+            return value;
+        } else {
+            return value * getPow(value, powValue - 1);
         }
     }
 }
